@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Albums{% endblock title %}
+{% block content %}
+
+    <h3>Albums</h3>
+
+    <div class="row">
+        {% for Album in albums %}
+        <div class="col-sm-4">
+            <br>
+            <div class="card" style="width: 100%;">
+                <img src="{{ album.album_cover.url }}" class="card-img-top" alt="{{ album.title }}">
+
+                <div class="card-body">
+                  <h5 class="card-title">{{ album | capfirst }}</h5>
+                    <a href="album/{{album.pk}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
+                    <a href="edit_album/{{album.pk}}/" class="btn btn-primary"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="delete_album/{{album.pk}}/" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                </div>
+              </div>
+          </div>
+        {% endfor %}
+        </div>
+{% endblock content %}
